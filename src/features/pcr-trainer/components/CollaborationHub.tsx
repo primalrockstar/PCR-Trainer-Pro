@@ -1,6 +1,5 @@
 import React from 'react';
-import { useUser } from '../context/UserContext';
-import { CollaborationSession, SessionParticipant } from '../types';
+import { CollaborationSession } from '../types';
 
 interface CollaborationHubProps {
   onClose: () => void;
@@ -38,7 +37,6 @@ const mockSessions: CollaborationSession[] = [
 ];
 
 export const CollaborationHub: React.FC<CollaborationHubProps> = ({ onClose, onJoinSession }) => {
-  const { user } = useUser();
   const glassPanelClass = "bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl";
 
   return (

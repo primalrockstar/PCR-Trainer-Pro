@@ -1,6 +1,6 @@
 import React from 'react';
 import { useUser } from '../context/UserContext';
-import { UserAnalytics, PerformanceMetrics, CategoryPerformance } from '../types';
+import { UserAnalytics } from '../types';
 
 interface AnalyticsDashboardProps {
   onClose: () => void;

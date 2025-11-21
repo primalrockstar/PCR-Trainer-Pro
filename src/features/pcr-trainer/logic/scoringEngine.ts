@@ -1,4 +1,4 @@
-import { PCRDocument, Scenario, PCRScores, CategoryScore, RequiredElement, AISuggestion } from '../types';
+import { PCRDocument, Scenario, PCRScores, CategoryScore, AISuggestion } from '../types';
 
 // List of common medical terms to check for "Medical Terminology Usage" score
 const MEDICAL_TERMS = [
@@ -30,7 +30,7 @@ export const calculateScore = (document: PCRDocument, scenario: Scenario): PCRSc
   })));
 
   // 2. Score Vitals Documentation
-  const vitalsScore = scoreVitals(document.assessment.vitalSigns, scenario);
+  const vitalsScore = scoreVitals(document.assessment.vitalSigns);
   categories.push(vitalsScore);
   totalScore += vitalsScore.score;
   totalMaxScore += vitalsScore.maxScore;
@@ -54,7 +54,7 @@ export const calculateScore = (document: PCRDocument, scenario: Scenario): PCRSc
   })));
 
   // 4. Score Completeness (Required Fields)
-  const completenessScore = scoreCompleteness(document, scenario);
+  const completenessScore = scoreCompleteness(document);
   categories.push(completenessScore);
   totalScore += completenessScore.score;
   totalMaxScore += completenessScore.maxScore;
@@ -110,7 +110,7 @@ const scoreNarrative = (narrative: any, scenario: Scenario): CategoryScore => {
   };
 };
 
-const scoreVitals = (vitals: any[], scenario: Scenario): CategoryScore => {
+const scoreVitals = (vitals: any[]): CategoryScore => {
   let score = 0;
   const maxScore = 100;
   const suggestions: string[] = [];
@@ -190,7 +190,7 @@ const scoreTreatment = (document: PCRDocument, scenario: Scenario): CategoryScor
   };
 };
 
-const scoreCompleteness = (document: PCRDocument, scenario: Scenario): CategoryScore => {
+const scoreCompleteness = (document: PCRDocument): CategoryScore => {
   let score = 100;
   const maxScore = 100;
   const suggestions: string[] = [];

@@ -1,6 +1,5 @@
-import { Scenario, ScenarioCategory, RequiredElement } from '../types';
+import { Scenario } from '../types';
 
-const CATEGORIES: ScenarioCategory[] = ['medical', 'trauma', 'cardiac', 'respiratory', 'neurological', 'pediatric', 'geriatric'];
 const DIFFICULTIES = ['beginner', 'intermediate', 'advanced'] as const;
 
 const TEMPLATES = [

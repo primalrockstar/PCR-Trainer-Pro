@@ -1,6 +1,5 @@
 import React from 'react';
 import { useUser } from '../context/UserContext';
-import { UserRole } from '../types';
 
 interface UserProfileProps {
   onClose: () => void;
